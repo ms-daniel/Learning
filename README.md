@@ -1,2 +1,3 @@
-# Learn-WxWidgets
-Estarei publicando todo meu aprendizado com a biblioteca para gui em c/c++ wxwidgets, usando Visual Studio 2022.
+# Learning
+Estarei publicando todo meu aprendizado com todo e qualquer assunto relacionado a programação aqui.
+Tentarei ao máximo deixar separado, em pastas, por tópicos. 
