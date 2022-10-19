@@ -9,19 +9,19 @@
 
 class MyApp : public wxApp
 {
-    public:
-        virtual bool OnInit();
+public:
+    virtual bool OnInit();
 };
 
 class MyFrame : public wxFrame
 {
-    public:
-        MyFrame();
+public:
+    MyFrame();
 
-    private:
-        void OnHello(wxCommandEvent& event);
-        void OnExit(wxCommandEvent& event);
-        void OnAbout(wxCommandEvent& event);
+private:
+    void OnHello(wxCommandEvent& event);
+    void OnExit(wxCommandEvent& event);
+    void OnAbout(wxCommandEvent& event);
 };
 
 enum
@@ -39,7 +39,7 @@ bool MyApp::OnInit()
 }
 
 MyFrame::MyFrame()
-    : wxFrame(NULL, wxID_ANY, "Ola Mundo!")
+    : wxFrame(nullptr, wxID_ANY, "Hello World")
 {
     wxMenu* menuFile = new wxMenu;
     menuFile->Append(ID_Hello, "&Hello...\tCtrl-H",
@@ -57,7 +57,7 @@ MyFrame::MyFrame()
     SetMenuBar(menuBar);
 
     CreateStatusBar();
-    SetStatusText("Bem-vindo ao wxWidgets!");
+    SetStatusText("Welcome to wxWidgets!");
 
     Bind(wxEVT_MENU, &MyFrame::OnHello, this, ID_Hello);
     Bind(wxEVT_MENU, &MyFrame::OnAbout, this, wxID_ABOUT);
