@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UIWxWidgets", "UIWxWidgets\UIWxWidgets.vcxproj", "{A48E4386-D635-465A-826C-849F5099AC14}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WxWidgets", "WxWidgets\WxWidgets.vcxproj", "{A48E4386-D635-465A-826C-849F5099AC14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
