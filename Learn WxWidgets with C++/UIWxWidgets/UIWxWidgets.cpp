@@ -22,11 +22,13 @@ private:
     void OnHello(wxCommandEvent& event);
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
+    void OpenFile(wxCommandEvent& event);
 };
 
 enum
 {
-    ID_Hello = 1
+    ID_Hello = 1,
+    ID_FILE = 2
 };
 
 wxIMPLEMENT_APP(MyApp);
@@ -39,27 +41,29 @@ bool MyApp::OnInit()
 }
 
 MyFrame::MyFrame()
-    : wxFrame(nullptr, wxID_ANY, "Hello World")
+    : wxFrame(nullptr, wxID_ANY, "Aprendendo WxWidgets")
 {
     wxMenu* menuFile = new wxMenu;
-    menuFile->Append(ID_Hello, "&Hello...\tCtrl-H",
-        "Help string shown in status bar for this menu item");
+    menuFile->Append(ID_Hello, "&Olá...\tCtrl-H",
+        "Aqui vou so mostrar um dialog box");
+    menuFile->Append(ID_FILE, "Abrir arquivo", "abre ai vai");
     menuFile->AppendSeparator();
     menuFile->Append(wxID_EXIT);
 
     wxMenu* menuHelp = new wxMenu;
-    menuHelp->Append(wxID_ABOUT);
+    menuHelp->Append(wxID_ABOUT, "&Click me..\tCtrl-C", "Essa foi minha primeira tentativa de mudança");
 
     wxMenuBar* menuBar = new wxMenuBar;
-    menuBar->Append(menuFile, "&File");
-    menuBar->Append(menuHelp, "&Help");
+    menuBar->Append(menuFile, "&Arquivo");
+    menuBar->Append(menuHelp, "&Ajuda");
 
     SetMenuBar(menuBar);
 
     CreateStatusBar();
-    SetStatusText("Welcome to wxWidgets!");
+    SetStatusText("Bem-vindo a tela de aprendizagem WxWidgets");
 
     Bind(wxEVT_MENU, &MyFrame::OnHello, this, ID_Hello);
+    Bind(wxEVT_MENU, &MyFrame::OpenFile, this, ID_FILE);
     Bind(wxEVT_MENU, &MyFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &MyFrame::OnExit, this, wxID_EXIT);
 }
@@ -71,11 +75,25 @@ void MyFrame::OnExit(wxCommandEvent& event)
 
 void MyFrame::OnAbout(wxCommandEvent& event)
 {
-    wxMessageBox("This is a wxWidgets Hello World example",
-        "About Hello World", wxOK | wxICON_INFORMATION);
+    wxMessageBox("Esse era apenas um exemplo de hello world, mas vou mexer muito",
+        "Tentando de novo", wxOK | wxICON_INFORMATION);
 }
 
 void MyFrame::OnHello(wxCommandEvent& event)
 {
-    wxLogMessage("Hello world from wxWidgets!");
+    wxLogMessage("Dialog box do wxwidgets");
+}
+
+void MyFrame::OpenFile(wxCommandEvent& WXUNUSED(event))
+{
+    wxFileDialog* OpenDialog = new wxFileDialog(
+        this, _("Choose a file to open"), wxEmptyString, wxEmptyString,
+        _("Text files (*.txt)|*.txt|C++ Source Files (*.cpp, *.cxx)|*.cpp;*.cxx| C Source files(*.c) | *.c | C header files(*.h) | *.h"),
+            wxFD_OPEN, wxDefaultPosition);
+
+    // Creates a "open file" dialog with 4 file types
+    if (OpenDialog->ShowModal() == wxID_OK) // if the user click "Open" instead of "cancel"
+    {
+  
+    }
 }
